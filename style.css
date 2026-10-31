@@ -52,10 +52,19 @@ h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
 
 /* ---------- כותרת עליונה ---------- */
 .site-header { padding-block: 1.75rem 1.25rem; border-block-end: 6px solid; border-image: var(--pop) 1; }
-.site-header a { text-decoration: none; color: inherit; display: inline-block; }
+.site-header a {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  column-gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.site-logo { grid-row: span 2; inline-size: clamp(3.5rem, 12vw, 5.5rem); block-size: auto; transform: rotate(-6deg); }
+.site-sub { justify-self: start; }
 .site-title {
   margin: 0;
-  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  font-size: clamp(1.75rem, 6.5vw, 3.75rem);
   font-weight: 900;
   background: var(--pop);
   -webkit-background-clip: text;
