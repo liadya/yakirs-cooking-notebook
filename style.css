@@ -138,6 +138,23 @@ h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
 }
 .card:active { transform: translate(-3px, 3px); box-shadow: -2px 2px 0 var(--shadow); }
 
+/* ---------- כשרות: פרווה / חלבי / בשרי ---------- */
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.65rem;
+  border: 2px solid #141414;
+  border-radius: 999px;
+  color: #141414;
+  font-size: 0.875rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.tag.parve { background: #7ee08a; }
+.tag.dairy { background: #8fe3f0; }
+.tag.meat  { background: #ff9fb0; }
+.card .tag { margin-block-start: 0.75rem; }
+.recipe h1 + p + .tag { margin-block-start: 0.5rem; }
+
 /* ---------- עמוד מתכון ---------- */
 .back { display: inline-block; margin-block: 1.5rem 1rem; }
 
