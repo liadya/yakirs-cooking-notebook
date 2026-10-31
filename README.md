@@ -24,10 +24,4 @@ python3 -m http.server
 
 Settings → Pages → Source: **Deploy from a branch** → Branch: `main`, תיקייה `/ (root)` → Save.
 
-## קרדיט לתמונות
-
-כל התמונות מ-[Unsplash](https://unsplash.com/) ברישיון [Unsplash](https://unsplash.com/license):
-
-- `images/hero.jpg` – [Conor Brown](https://unsplash.com/photos/sqkXyyj4WdE)
-
 הקוד ברישיון ה-LICENSE שבמאגר.
