@@ -28,8 +28,6 @@ Settings → Pages → Source: **Deploy from a branch** → Branch: `main`, תי
 
 כל התמונות מ-[Unsplash](https://unsplash.com/) ברישיון [Unsplash](https://unsplash.com/license):
 
-- `images/hero.jpg`, `images/recipe-1.jpg` – [Conor Brown](https://unsplash.com/photos/sqkXyyj4WdE)
-- `images/recipe-2.jpg` – [Tasha Kostyuk](https://unsplash.com/photos/oGUN-XyymPU)
-- `images/recipe-3.jpg` – [Kamilla Isalieva](https://unsplash.com/photos/3IZq0613Llw)
+- `images/hero.jpg` – [Conor Brown](https://unsplash.com/photos/sqkXyyj4WdE)
 
 הקוד ברישיון ה-LICENSE שבמאגר.
