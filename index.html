@@ -33,9 +33,14 @@
       <img src="images/hero.jpg" width="1600" height="893" alt="נאוה מבשלת, ציור גרפיטי צבעוני על קיר לבנים">
     </figure>
 
-    <section aria-labelledby="recipes-title">
-      <h2 class="section-title" id="recipes-title">המתכונים</h2>
+    <!-- קטגוריה: כדי להוסיף קטגוריה חדשה, מעתיקים בלוק section שלם ומוסיפים קישור בתפריט הקטגוריות -->
+    <nav class="cats" aria-label="קטגוריות">
+      <a href="#sweets">🍰 עוגות ועוגיות</a>
+      <a href="#mains">🍲 מנות עיקריות</a>
+    </nav>
 
+    <section class="category" id="sweets" aria-labelledby="sweets-title">
+      <h2 class="section-title" id="sweets-title">🍰 עוגות ועוגיות</h2>
       <ul class="cards">
         <!-- כרטיס מתכון: העתיקו מכאן -->
         <li>
@@ -50,12 +55,12 @@
         </li>
         <!-- כרטיס מתכון: עד כאן -->
         <li>
-          <a class="card" href="recipes/moroccan-fish.html">
-            <img src="images/recipes/moroccan-fish.jpg" width="1200" height="805" alt="" loading="lazy">
+          <a class="card" href="recipes/brownies.html">
+            <img src="images/recipes/brownies.jpg" width="1200" height="805" alt="" loading="lazy">
             <div class="card-body">
-              <h3>דג מרוקאי</h3>
-              <p>30 דקות על אש בינונית</p>
-              <span class="tag parve">🌱 פרווה</span>
+              <h3>בראוניז 3 שוקולדים</h3>
+              <p>180 מעלות · 15–20 דקות</p>
+              <span class="tag dairy">🥛 חלבי</span>
             </div>
           </a>
         </li>
@@ -69,22 +74,18 @@
             </div>
           </a>
         </li>
+      </ul>
+    </section>
+
+    <section class="category" id="mains" aria-labelledby="mains-title">
+      <h2 class="section-title" id="mains-title">🍲 מנות עיקריות</h2>
+      <ul class="cards">
         <li>
-          <a class="card" href="recipes/brownies.html">
-            <img src="images/recipes/brownies.jpg" width="1200" height="805" alt="" loading="lazy">
+          <a class="card" href="recipes/moroccan-fish.html">
+            <img src="images/recipes/moroccan-fish.jpg" width="1200" height="805" alt="" loading="lazy">
             <div class="card-body">
-              <h3>בראוניז 3 שוקולדים</h3>
-              <p>180 מעלות · 15–20 דקות</p>
-              <span class="tag dairy">🥛 חלבי</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="recipes/falafel.html">
-            <img src="images/recipes/falafel.jpg" width="1200" height="805" alt="" loading="lazy">
-            <div class="card-body">
-              <h3>פלאפל ביתי</h3>
-              <p>השריה 12–24 שעות · טיגון עמוק</p>
+              <h3>דג מרוקאי</h3>
+              <p>30 דקות על אש בינונית</p>
               <span class="tag parve">🌱 פרווה</span>
             </div>
           </a>
@@ -96,6 +97,16 @@
               <h3>צלי כתף עם ערמונים</h3>
               <p>4 שעות בישול</p>
               <span class="tag meat">🥩 בשרי</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="recipes/falafel.html">
+            <img src="images/recipes/falafel.jpg" width="1200" height="805" alt="" loading="lazy">
+            <div class="card-body">
+              <h3>פלאפל ביתי</h3>
+              <p>השריה 12–24 שעות · טיגון עמוק</p>
+              <span class="tag parve">🌱 פרווה</span>
             </div>
           </a>
         </li>
