@@ -1,26 +1,30 @@
 /* המחברת של נאוה — גיליון עיצוב יחיד לכל האתר.
+   פלטה מתוך תמונת הגרפיטי: מג'נטה, סגול, טורקיז, צהוב וכתום, עם קווי מתאר שחורים.
    כיוון הכתיבה מימין לשמאל; משתמשים במאפיינים לוגיים (inline/block) ולא ב-left/right. */
 
 :root {
-  --paper: #fbf6ee;
-  --card: #fffdf9;
-  --ink: #2b211a;
-  --ink-soft: #6b5a4d;
-  --accent: #a8482a;      /* חמרה - 5.9:1 על הנייר */
-  --line: #e6d9c6;
-  --radius: 14px;
-  --font-body: "Heebo", system-ui, sans-serif;
-  --font-display: "Frank Ruhl Libre", "Times New Roman", serif;
+  --wall: #f3f1ee;        /* קיר בטון בהיר */
+  --card: #ffffff;
+  --ink: #141414;
+  --ink-soft: #454545;
+  --purple: #7b2cbf;      /* קישורים - 7:1 על לבן */
+  --magenta: #d6006f;     /* כותרות משנה - 4.9:1 על הקיר */
+  --cyan: #12c4dc;
+  --yellow: #ffd60a;
+  --orange: #ff7a00;
+  --pop: linear-gradient(90deg, var(--yellow), var(--orange), var(--magenta), var(--purple), var(--cyan));
+  --radius: 16px;
+  --font: "Rubik", system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #1d1612;
-    --card: #271e18;
-    --ink: #f3e8da;
-    --ink-soft: #bba995;
-    --accent: #e58b68;
-    --line: #3b2e25;
+    --wall: #121212;
+    --card: #1d1d1d;
+    --ink: #f5f5f5;
+    --ink-soft: #c9c9c9;
+    --purple: #c58cff;
+    --magenta: #ff5aa8;
   }
 }
 
@@ -30,97 +34,129 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-block-start: 1rem; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--wall);
   color: var(--ink);
-  font: 400 1.0625rem/1.7 var(--font-body);
-  text-rendering: optimizeLegibility;
+  font: 400 1.0625rem/1.7 var(--font);
 }
 
 img { display: block; max-inline-size: 100%; block-size: auto; }
 
-::selection { background: var(--accent); color: var(--paper); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--yellow); color: #141414; }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
 
-a { color: var(--accent); text-underline-offset: 0.2em; }
+a { color: var(--purple); font-weight: 500; text-underline-offset: 0.2em; }
 
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; margin: 0; text-wrap: balance; }
+h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
 
 .wrap { inline-size: min(100% - 2.5rem, 68rem); margin-inline: auto; }
 
 /* ---------- כותרת עליונה ---------- */
-.site-header { padding-block: 2rem 1.25rem; border-block-end: 1px solid var(--line); }
-.site-header a { text-decoration: none; color: inherit; }
-.site-title { margin: 0; font-size: clamp(2rem, 6vw, 3.25rem); font-weight: 900; }
+.site-header { padding-block: 1.75rem 1.25rem; border-block-end: 6px solid; border-image: var(--pop) 1; }
+.site-header a { text-decoration: none; color: inherit; display: inline-block; }
+.site-title {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 3.75rem);
+  font-weight: 900;
+  background: var(--pop);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(3px 3px 0 var(--ink));
+}
 .site-sub {
-  margin: 0.25rem 0 0;
-  color: var(--accent);
-  font-size: 0.9rem;
-  letter-spacing: 0.14em;
+  margin: 0.35rem 0 0;
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  background: #141414;
+  color: var(--yellow);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  border-radius: 6px;
+  transform: rotate(-2deg);
 }
 
 /* ---------- מבוא ו-hero ---------- */
-.intro { padding-block: 2.5rem 1.5rem; max-inline-size: 38rem; }
-.intro p { margin: 0; font-size: 1.25rem; color: var(--ink-soft); text-wrap: pretty; }
+.intro { padding-block: 2rem 1.5rem; max-inline-size: 40rem; }
+.intro p { margin: 0; font-size: 1.25rem; font-weight: 500; text-wrap: pretty; }
 
 .hero { margin: 0 0 3rem; }
 .hero img {
   inline-size: 100%;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
+  border: 4px solid var(--ink);
   border-radius: var(--radius);
+  box-shadow: -8px 8px 0 var(--magenta);
 }
 
 /* ---------- כרטיסי מתכונים ---------- */
-.section-title { font-size: 1.75rem; margin-block-end: 1.25rem; }
+.section-title { font-size: 2rem; font-weight: 900; margin-block-end: 1.5rem; }
 
 .cards {
+  --shadow: var(--cyan);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
   padding: 0;
   margin: 0 0 4rem;
   list-style: none;
 }
+.cards li:nth-child(5n+2) { --shadow: var(--yellow); }
+.cards li:nth-child(5n+3) { --shadow: var(--magenta); }
+.cards li:nth-child(5n+4) { --shadow: var(--orange); }
+.cards li:nth-child(5n+5) { --shadow: var(--purple); }
 
 .card {
   display: flex;
   flex-direction: column;
   block-size: 100%;
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 3px solid var(--ink);
   border-radius: var(--radius);
+  box-shadow: -6px 6px 0 var(--shadow);
   overflow: hidden;
   color: inherit;
   text-decoration: none;
-  transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
 }
-.card img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.card img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-block-end: 3px solid var(--ink); }
 .card-body { padding: 1rem 1.25rem 1.25rem; }
-.card h3 { font-size: 1.35rem; margin-block-end: 0.35rem; }
+.card h3 { font-size: 1.4rem; font-weight: 700; margin-block-end: 0.35rem; }
 .card p { margin: 0; color: var(--ink-soft); font-size: 0.975rem; line-height: 1.55; }
 
 @media (hover: hover) {
-  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card:hover { transform: translate(3px, -3px); box-shadow: -9px 9px 0 var(--shadow); }
 }
+.card:active { transform: translate(-3px, 3px); box-shadow: -2px 2px 0 var(--shadow); }
 
 /* ---------- עמוד מתכון ---------- */
-.back { display: inline-block; margin-block: 1.5rem 1rem; font-weight: 500; }
+.back { display: inline-block; margin-block: 1.5rem 1rem; }
 
 .recipe { padding-block-end: 4rem; }
-.recipe > * { max-inline-size: 44rem; } /* עמודה צרה, מיושרת לקצה הכותרת */
-.recipe h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; margin-block-end: 1.25rem; }
-.recipe > img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); margin-block-end: 2rem; }
-.recipe h2 { font-size: 1.5rem; margin-block: 2rem 0.75rem; color: var(--accent); }
+.recipe > * { max-inline-size: 44rem; }
+.recipe h1 { font-size: clamp(2.25rem, 7vw, 3.25rem); font-weight: 900; margin-block-end: 0.75rem; }
+.recipe h1 + p {
+  display: inline-block;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  background: var(--yellow);
+  color: #141414;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  font-weight: 500;
+}
+.recipe > img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border: 4px solid var(--ink); border-radius: var(--radius); box-shadow: -8px 8px 0 var(--cyan); margin-block-end: 2rem; }
+.recipe h2 { font-size: 1.6rem; font-weight: 900; margin-block: 2rem 0.75rem; color: var(--magenta); }
 .recipe ul, .recipe ol { padding-inline-start: 1.5rem; margin: 0; }
 .recipe li { margin-block-end: 0.5rem; padding-inline-start: 0.25rem; }
-.recipe li::marker { color: var(--accent); font-variant-numeric: tabular-nums; }
+.recipe li::marker { color: var(--purple); font-weight: 700; font-variant-numeric: tabular-nums; }
 .recipe p { max-inline-size: 65ch; }
 
 /* ---------- כותרת תחתונה ---------- */
 .site-footer {
   padding-block: 1.5rem 2.5rem;
-  border-block-start: 1px solid var(--line);
+  border-block-start: 6px solid;
+  border-image: var(--pop) 1;
   color: var(--ink-soft);
   font-size: 0.875rem;
 }
