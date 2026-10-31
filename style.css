@@ -171,7 +171,26 @@ h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
   border-radius: 12px;
   font-weight: 500;
 }
-.recipe > img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border: 4px solid var(--ink); border-radius: var(--radius); box-shadow: -8px 8px 0 var(--cyan); margin-block-end: 2rem; }
+.recipe > img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border: 4px solid var(--ink); border-radius: var(--radius); box-shadow: -8px 8px 0 var(--cyan); margin-block: 1.25rem 2rem; }
+
+/* מסך רחב: הטקסט בעמודה הימנית, התמונה בעמודה השמאלית ונדבקת בגלילה */
+@media (min-width: 900px) {
+  .recipe:has(> img) {
+    display: grid;
+    grid-template-columns: minmax(0, 44rem) minmax(16rem, 1fr);
+    column-gap: 3rem;
+    align-items: start;
+  }
+  .recipe:has(> img) > * { grid-column: 1; }
+  .recipe:has(> img) > :is(.back, h1 + p, .tag) { justify-self: start; }
+  .recipe > img {
+    grid-column: 2;
+    grid-row: 2 / span 40; /* ponytail: מניח פחות מ-40 אלמנטים במתכון; להגדיל אם מתכון ארוך יותר */
+    position: sticky;
+    inset-block-start: 1.5rem;
+    margin: 0;
+  }
+}
 .recipe h2 { font-size: 1.6rem; font-weight: 900; margin-block: 2rem 0.75rem; color: var(--magenta); }
 .recipe ul, .recipe ol { padding-inline-start: 1.5rem; margin: 0; }
 .recipe li { margin-block-end: 0.5rem; padding-inline-start: 0.25rem; }
