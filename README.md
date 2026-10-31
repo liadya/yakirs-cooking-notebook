@@ -1,1 +1,35 @@
-# yakirs-cooking-notebook
+# המחברת של נאוה · Nava's cookbook
+
+אתר סטטי (HTML + CSS בלבד, בעברית ומימין לשמאל) לאוסף מתכונים. בלי בנייה, בלי תלויות. מיועד ל-GitHub Pages.
+
+A static Hebrew (RTL) recipe site: plain HTML + one CSS file, no build step.
+
+## תצוגה מקומית
+
+```sh
+python3 -m http.server
+# ואז לפתוח http://localhost:8000
+```
+
+אפשר גם לפתוח את `index.html` ישירות בדפדפן.
+
+## הוספת מתכון
+
+1. מעתיקים את `recipes/example.html` לקובץ חדש, למשל `recipes/challah.html`, ועורכים את התוכן (ההערות בקובץ מסבירות מה להחליף).
+2. ב-`index.html` מעתיקים את בלוק הכרטיס שמסומן `כרטיס מתכון: העתיקו מכאן`, מדביקים אותו ברשימה, ומשנים את הכותרת, התיאור והתמונה.
+3. מכוונים את `href` של הכרטיס לקובץ החדש (`recipes/challah.html`).
+4. תמונות חדשות מניחים ב-`images/`, ומוסיפים שורת קרדיט בכותרת התחתונה.
+
+## פרסום ב-GitHub Pages
+
+Settings → Pages → Source: **Deploy from a branch** → Branch: `main`, תיקייה `/ (root)` → Save.
+
+## קרדיט לתמונות
+
+כל התמונות מ-[Unsplash](https://unsplash.com/) ברישיון [Unsplash](https://unsplash.com/license):
+
+- `images/hero.jpg`, `images/recipe-1.jpg` – [Conor Brown](https://unsplash.com/photos/sqkXyyj4WdE)
+- `images/recipe-2.jpg` – [Tasha Kostyuk](https://unsplash.com/photos/oGUN-XyymPU)
+- `images/recipe-3.jpg` – [Kamilla Isalieva](https://unsplash.com/photos/3IZq0613Llw)
+
+הקוד ברישיון ה-LICENSE שבמאגר.

@@ -1,0 +1,131 @@
+/* המחברת של נאוה — גיליון עיצוב יחיד לכל האתר.
+   כיוון הכתיבה מימין לשמאל; משתמשים במאפיינים לוגיים (inline/block) ולא ב-left/right. */
+
+:root {
+  --paper: #fbf6ee;
+  --card: #fffdf9;
+  --ink: #2b211a;
+  --ink-soft: #6b5a4d;
+  --accent: #a8482a;      /* חמרה - 5.9:1 על הנייר */
+  --line: #e6d9c6;
+  --radius: 14px;
+  --font-body: "Heebo", system-ui, sans-serif;
+  --font-display: "Frank Ruhl Libre", "Times New Roman", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1d1612;
+    --card: #271e18;
+    --ink: #f3e8da;
+    --ink-soft: #bba995;
+    --accent: #e58b68;
+    --line: #3b2e25;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-block-start: 1rem; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.7 var(--font-body);
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-inline-size: 100%; block-size: auto; }
+
+::selection { background: var(--accent); color: var(--paper); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+a { color: var(--accent); text-underline-offset: 0.2em; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; margin: 0; text-wrap: balance; }
+
+.wrap { inline-size: min(100% - 2.5rem, 68rem); margin-inline: auto; }
+
+/* ---------- כותרת עליונה ---------- */
+.site-header { padding-block: 2rem 1.25rem; border-block-end: 1px solid var(--line); }
+.site-header a { text-decoration: none; color: inherit; }
+.site-title { margin: 0; font-size: clamp(2rem, 6vw, 3.25rem); font-weight: 900; }
+.site-sub {
+  margin: 0.25rem 0 0;
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ---------- מבוא ו-hero ---------- */
+.intro { padding-block: 2.5rem 1.5rem; max-inline-size: 38rem; }
+.intro p { margin: 0; font-size: 1.25rem; color: var(--ink-soft); text-wrap: pretty; }
+
+.hero { margin: 0 0 3rem; }
+.hero img {
+  inline-size: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* ---------- כרטיסי מתכונים ---------- */
+.section-title { font-size: 1.75rem; margin-block-end: 1.25rem; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0 0 4rem;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+}
+.card img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.card-body { padding: 1rem 1.25rem 1.25rem; }
+.card h3 { font-size: 1.35rem; margin-block-end: 0.35rem; }
+.card p { margin: 0; color: var(--ink-soft); font-size: 0.975rem; line-height: 1.55; }
+
+@media (hover: hover) {
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+}
+
+/* ---------- עמוד מתכון ---------- */
+.back { display: inline-block; margin-block: 1.5rem 1rem; font-weight: 500; }
+
+.recipe { padding-block-end: 4rem; }
+.recipe > * { max-inline-size: 44rem; } /* עמודה צרה, מיושרת לקצה הכותרת */
+.recipe h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; margin-block-end: 1.25rem; }
+.recipe > img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: var(--radius); margin-block-end: 2rem; }
+.recipe h2 { font-size: 1.5rem; margin-block: 2rem 0.75rem; color: var(--accent); }
+.recipe ul, .recipe ol { padding-inline-start: 1.5rem; margin: 0; }
+.recipe li { margin-block-end: 0.5rem; padding-inline-start: 0.25rem; }
+.recipe li::marker { color: var(--accent); font-variant-numeric: tabular-nums; }
+.recipe p { max-inline-size: 65ch; }
+
+/* ---------- כותרת תחתונה ---------- */
+.site-footer {
+  padding-block: 1.5rem 2.5rem;
+  border-block-start: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+.site-footer p { margin: 0 0 0.35rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}
