@@ -153,7 +153,6 @@ h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
 .tag.dairy { background: #8fe3f0; }
 .tag.meat  { background: #ff9fb0; }
 .card .tag { margin-block-start: 0.75rem; }
-.recipe h1 + p + .tag { margin-block-start: 0.5rem; }
 
 /* ---------- עמוד מתכון ---------- */
 .back { display: inline-block; margin-block: 1.5rem 1rem; }
@@ -163,7 +162,7 @@ h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
 .recipe h1 { font-size: clamp(2.25rem, 7vw, 3.25rem); font-weight: 900; margin-block-end: 0.75rem; }
 .recipe h1 + p {
   display: inline-block;
-  margin: 0;
+  margin: 0.25rem 0;
   padding: 0.25rem 0.75rem;
   background: var(--yellow);
   color: #141414;
@@ -171,26 +170,43 @@ h1, h2, h3 { line-height: 1.15; margin: 0; text-wrap: balance; }
   border-radius: 12px;
   font-weight: 500;
 }
-.recipe > img { inline-size: 100%; aspect-ratio: 3 / 2; object-fit: cover; border: 4px solid var(--ink); border-radius: var(--radius); box-shadow: -8px 8px 0 var(--cyan); margin-block: 1.25rem 2rem; }
-
-/* מסך רחב: הטקסט בעמודה הימנית, התמונה בעמודה השמאלית ונדבקת בגלילה */
-@media (min-width: 900px) {
-  .recipe:has(> img) {
-    display: grid;
-    grid-template-columns: minmax(0, 44rem) minmax(16rem, 1fr);
-    column-gap: 3rem;
-    align-items: start;
-  }
-  .recipe:has(> img) > * { grid-column: 1; }
-  .recipe:has(> img) > :is(.back, h1 + p, .tag) { justify-self: start; }
-  .recipe > img {
-    grid-column: 2;
-    grid-row: 2 / span 40; /* ponytail: מניח פחות מ-40 אלמנטים במתכון; להגדיל אם מתכון ארוך יותר */
-    position: sticky;
-    inset-block-start: 1.5rem;
-    margin: 0;
-  }
+/* תמונת המתכון ברקע, ושם המתכון עליה */
+.recipe > .recipe-hero { max-inline-size: none; }
+.recipe-hero {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-block-size: clamp(22rem, 62vh, 38rem);
+  margin-block-end: 1rem;
+  border: 4px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: -8px 8px 0 var(--cyan);
+  overflow: hidden;
+  isolation: isolate;
 }
+.recipe-hero img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.recipe-hero::after {  /* הצללה בתחתית כדי שהכותרת תיקרא על כל תמונה */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgb(0 0 0 / 0.85), rgb(0 0 0 / 0.35) 45%, transparent 70%);
+}
+.recipe-hero-text { padding: 1.25rem; }
+.recipe-hero h1 {
+  color: #fff;
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  text-shadow: 3px 3px 0 #141414;
+}
+.recipe-hero .tag { margin-inline-start: 0.5rem; }
+
 .recipe h2 { font-size: 1.6rem; font-weight: 900; margin-block: 2rem 0.75rem; color: var(--magenta); }
 .recipe ul, .recipe ol { padding-inline-start: 1.5rem; margin: 0; }
 .recipe li { margin-block-end: 0.5rem; padding-inline-start: 0.25rem; }
