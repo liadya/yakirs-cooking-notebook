@@ -17,7 +17,7 @@ Every recipe image is a **generated graffiti illustration**, never a photo from 
 
 - Size: 1200x805 JPEG, saved as `images/recipes/<recipe-slug>.jpg`.
 - Generator: Antigravity CLI (`agy`) with model `gemini-4-argon-high`. Pass an existing image (e.g. `images/recipes/sfenj.jpg`) as a style reference. Run it as `agy --model gemini-4-argon-high --mode accept-edits -p "<prompt>"` (no `--dangerously-skip-permissions`).
-- `agy` ignores the save path in the prompt and writes the image to `~/.gemini/antigravity-cli/brain/<session-id>/<name>.jpg`. Find it with `find ~/.gemini/antigravity-cli/brain -name '*.jpg' -mmin -10 -not -path '*/.*'`.
+- `agy` ignores the save path in the prompt and writes the image to `~/.gemini/antigravity-cli/brain/<session-id>/<name>.jpg`. Find it with `find ~/.gemini/antigravity-cli/brain -name '*.jpg' -mmin -10 -not -path '*/.system_generated/*'`. It may produce several versions; look at each and pick the best.
 - Prompt template (fill in the subject and props):
 
   > A colorful pop graffiti street-art mural spray-painted on a weathered red brick wall. Bold black ink outlines, comic-style shading, bright paint splashes and drips in cyan, magenta, yellow, orange and purple, concrete floor at the bottom. Landscape 3:2. Subject: **<the dish, centered, appetizing>**. Around it: **<3–6 related ingredients or props>**. No text or letters anywhere.
